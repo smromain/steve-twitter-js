@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+  
+  <div class="page-header">
+    <h1>Welcome to Twitter.js, Nimit!</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <img src="../images/sr.jpg"><br>
+      <b>Steve Romain</b><br>
+      1,245,213 followers
+    </div>
+    <div id="tweets" class="col-md-9">
+    <h2>All Tweets</h2>
+    <br>
+      <!-- display tweets here -->
+      {% for tweet in tweets %}
+      <div id="tweet-{{tweet.name}}" class="tweet">
+      	<li><h4>{{tweet.name}}</h4></li>
+        <li>{{tweet.text}}<p></p><a href="#">Retweet</a></li>
+      </div>
+      {% endfor %}
+      </div>
+      
+    </div>
+  </div>
+    
+{% endblock %}
