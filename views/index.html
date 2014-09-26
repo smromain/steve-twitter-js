@@ -3,22 +3,34 @@
 {% block content %}
   
   <div class="page-header">
-    <h1>Welcome to Twitter.js, Nimit!</h1>
+    <h1>Welcome to Twitter.js, Steve!</h1>
   </div>
   <div class="row">
     <div class="col-md-3">
-      <img src="../images/sr.jpg"><br>
+      <img src="/images/sr.jpg"><br>
       <b>Steve Romain</b><br>
       1,245,213 followers
     </div>
     <div id="tweets" class="col-md-9">
+    {% if show_form %}
+  	<form action="/submit" method="POST">
+    	<label for="name_field">Name:</label>
+    	<input name="name" type="text" id="name_field" value="{{user}}" />
+ 
+	    <label for="text_field">Text:</label>
+   		<input name="text" type="text" id="text_field" style="width: 350px;" />
+    	<input type="submit" value="Submit" />
+  	</form>
+	{% endif %}
     <h2>All Tweets</h2>
     <br>
+    <hr>
       <!-- display tweets here -->
-      {% for tweet in tweets %}
+      <div id='runway'></div>
+      {% for tweet in tweets|reverse %}
       <div id="tweet-{{tweet.name}}" class="tweet">
-      	<li><h4>{{tweet.name}}</h4></li>
-        <li>{{tweet.text}}<p></p><a href="#">Retweet</a></li>
+        <li><h4><a href="/users/{{tweet.name}}">{{tweet.name}}</a></h4></li>
+        <li><a href="/users/{{tweet.name}}/tweet/{{tweet.id}}">{{tweet.text}}</a><p></p><a href="#">Retweet</a></li>
       </div>
       {% endfor %}
       </div>
