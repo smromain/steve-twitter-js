@@ -1,11 +1,13 @@
 var express = require('express');
 var store = require ('../store');
+var models = require('../models');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-	var tweets = store.list();
-	res.render('index', { title: 'Twitter.js', tweets: tweets,show_form: true });
+	models.Tweet.findAll({include:[models.User]}).success(function(tweets) {
+		res.render('index', {title: 'Twitter.js', tweets: tweets})
+	});
 });
 
 router.post('/submit', function(req, res) {

@@ -28,9 +28,9 @@
       <!-- display tweets here -->
       <div id='runway'></div>
       {% for tweet in tweets|reverse %}
-      <div id="tweet-{{tweet.name}}" class="tweet">
-        <li><h4><a href="/users/{{tweet.name}}">{{tweet.name}}</a></h4></li>
-        <li><a href="/users/{{tweet.name}}/tweet/{{tweet.id}}">{{tweet.text}}</a><p></p><a href="#">Retweet</a></li>
+      <div id="tweet" class="tweet">
+        <li><h4><a href="/users/{{tweet.User.name}}">{{tweet.User.name}}</a></h4></li>
+        <li><a href="/users/{{tweet.User.name}}/tweet/{{tweet.id}}">{{tweet.tweet}}</a><p></p><a href="#">Retweet</a></li>
       </div>
       {% endfor %}
       </div>
